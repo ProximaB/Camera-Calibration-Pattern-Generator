@@ -5,22 +5,22 @@ import sys
 from datetime import datetime
 
 # construct the argument parser and parse the arguments
-ap = argparse.ArgumentParser()
-ap.add_argument("-r", "--rows-grid-num", required=True, type=int,
-                help="Number of grid for width.")
-ap.add_argument("-c", "--columns-grid-num", required=True, type=int,
-                help="Number of grid for height.")
-ap.add_argument("-g", "--grid-size-num", required=False, type=int, default=20,
-                help="Size of grid element in mm.")
-ap.add_argument("-o", "--output-file-name", required=False, type=str, default="Checkedboard_" + f"{datetime.now():%Y%m%d_%H%M%S}",
-                help="Name of output pdf file.")
-ap.add_argument("-b", "--base-color", required=False, type=str, default="(255,255,255)",
-                help="Color of rectangle, background will be set to its inverted color. (rrr,ggg,bbb)")
-# args = vars(ap.parse_args())
+def argument_parser():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("-r", "--rows-grid-num", required=True, type=int,
+                    help="Number of grid for width.")
+    ap.add_argument("-c", "--columns-grid-num", required=True, type=int,
+                    help="Number of grid for height.")
+    ap.add_argument("-s", "--block-size-px", required=False, type=int, default=60,
+                    help="Size of block element in px.")
+    ap.add_argument("-o", "--output-file-name", required=False, type=str, default="Checkedboard_" + f"{datetime.now():%Y%m%d_%H%M%S}",
+                    help="Name of output pdf file.")
+    ap.add_argument("-b", "--base-color", required=False, type=str, default="(255,255,255)",
+                    help="Color of rectangle, background will be set to its inverted color. (rrr,ggg,bbb)")
+    return vars(ap.parse_args())
 
+def generate_checkerboard(rows_num, columns_num, block_size, output_name, base_color):
 
-def main(rows_num, columns_num, grid_size, output_name, base_color):
-    block_size = 60
     image_width = block_size * columns_num
     image_height = block_size * rows_num
     base_color = eval(base_color)
@@ -32,27 +32,33 @@ def main(rows_num, columns_num, grid_size, output_name, base_color):
     color_column = 0
 
     for i in range(0, image_width, block_size):
-        color_row =not color_row
-        color_column = color_row
+            color_row = not color_row
+            color_column = color_row
 
-        for j in range(0, image_height, block_size):
-            checker_board[i:i+block_size, j:j+block_size] = base_color if color_column else inv_color
-            color_column = not color_column
+            for j in range(0, image_height, block_size):
+                checker_board[i:i+block_size, j:j +
+                            block_size] = base_color if color_column else inv_color
+                color_column = not color_column
+    return checker_board
+
+
+def main():
+    args = argument_parser()
+
+    rows_num = args['rows_grid_num']
+    columns_num = args['columns_grid_num']
+    grid_size = args['block_size_px']
+    output_name = args['output_file_name']
+    base_color = args['base_color']
+
+    checker_board = generate_checkerboard(rows_num, columns_num,
+                          grid_size, output_name, base_color)
 
     cv2.imshow('result', checker_board)
     cv2.waitKey(0)
 
 
 if __name__ == '__main__':
-    args = vars(ap.parse_args())
-
-    rows_num = args['rows_grid_num']
-    columns_num = args['columns_grid_num']
-    grid_size = args['grid_size_num']
-    output_name = args['output_file_name']
-    base_color = args['base_color']
-
-    print(args)
-    main(rows_num, columns_num, grid_size, output_name, base_color)
+    main()
 else:
     print("ChekcerboardCreator.py is being imported into another module")
