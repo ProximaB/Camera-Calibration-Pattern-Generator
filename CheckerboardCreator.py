@@ -7,10 +7,10 @@ from datetime import datetime
 def argument_parser():
     ap = argparse.ArgumentParser()
     ap.add_argument("-r", "--rows-grid-num", required=True, type=int,
-                    help="Number of grid for width.")
-    ap.add_argument("-c", "--columns-grid-num", required=True, type=int,
                     help="Number of grid for height.")
-    ap.add_argument("-s", "--block-size-mm", required=False, type=int, default=4,
+    ap.add_argument("-c", "--columns-grid-num", required=True, type=int,
+                    help="Number of grid for width.")
+    ap.add_argument("-s", "--block-size-mm", required=False, type=int, default=30,
                     help="Size of block element in mm.")
     ap.add_argument("-o", "--output-file-name", required=False, type=str, default="Checkerboard_" + f"{datetime.now():%Y%m%d_%H%M%S}",
                     help="Name of output pdf file.")
