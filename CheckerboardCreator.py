@@ -24,7 +24,6 @@ def generate_checkerboard(rows_num, columns_num, block_size, output_name, output
     block_size = block_size * 4
     image_width = block_size * columns_num
     image_height = block_size * rows_num
-    base_color = eval(base_color)
     inv_color = tuple(255 - val for val in base_color),
 
     checker_board = np.zeros((image_height, image_width, 3), np.uint8)
@@ -62,7 +61,7 @@ def main():
     columns_num = args['columns_grid_num']
     grid_size = args['block_size_mm']
     output_name = args['output_file_name']
-    base_color = args['base_color']
+    base_color = tuple(map(int, args['base_color'][1:-1].split(',')))
     output_path = args['output_path']
 
     print('Generating checkerboard...')
