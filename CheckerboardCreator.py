@@ -10,8 +10,8 @@ def argument_parser():
                     help="Number of grid for height.")
     ap.add_argument("-c", "--columns-grid-num", required=True, type=int,
                     help="Number of grid for width.")
-    ap.add_argument("-s", "--block-size-mm", required=False, type=int, default=30,
-                    help="Size of block element in mm.")
+    ap.add_argument("-s", "--block-size-px", required=False, type=int, default=30,
+                    help="Size of block element in px.")
     ap.add_argument("-o", "--output-file-name", required=False, type=str, default="Checkerboard_" + f"{datetime.now():%Y%m%d_%H%M%S}",
                     help="Name of output pdf file.")
     ap.add_argument("-d", "--output-path", required=False, type=str, default=".",
@@ -59,7 +59,7 @@ def main():
 
     rows_num = args['rows_grid_num']
     columns_num = args['columns_grid_num']
-    grid_size = args['block_size_mm']
+    grid_size = args['block_size_px']
     output_name = args['output_file_name']
     base_color = tuple(map(int, args['base_color'][1:-1].split(',')))
     output_path = args['output_path']

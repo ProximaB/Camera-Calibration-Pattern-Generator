@@ -12,8 +12,8 @@ optional arguments:
                         Number of grid for width.
   -c COLUMNS_GRID_NUM, --columns-grid-num COLUMNS_GRID_NUM
                         Number of grid for height.
-  -s BLOCK_SIZE_MM, --block-size-mm BLOCK_SIZE_MM
-                        Size of block element in mm.
+  -s BLOCK_SIZE_PX, --block-size-px BLOCK_SIZE_PX
+                        Size of block element in px.
   -o OUTPUT_FILE_NAME, --output-file-name OUTPUT_FILE_NAME
                         Name of output pdf file.
   -d OUTPUT_PATH, --output-path OUTPUT_PATH
@@ -25,7 +25,7 @@ optional arguments:
 examples:
   py CheckerboardCreator.py -r 2 -c 2
   py CheckerboardCreator.py -r 2 -c 2 -s 30 -o 2x2
-  py CheckerboardCreator.py -r 10 -c 8 -d ./results -o A4_20mm
+  py CheckerboardCreator.py -r 10 -c 8 -d ./results -o A4_20px
   py CheckerboardCreator.py -r 7 -c 8 -s 30 -o A4 -d results -b (20,30,80)
   ```
   
