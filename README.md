@@ -25,6 +25,7 @@ optional arguments:
 examples:
   py CheckerboardCreator.py -r 2 -c 2
   py CheckerboardCreator.py -r 2 -c 2 -s 30 -o 2x2
+  py CheckerboardCreator.py -r 10 -c 8 -d ./results -o A4_20mm
   py CheckerboardCreator.py -r 7 -c 8 -s 30 -o A4 -d results -b (20,30,80)
   ```
   
