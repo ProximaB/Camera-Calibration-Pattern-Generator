@@ -1,5 +1,5 @@
-# Checkerboard-creator-for-camera-calibration
-Checkerboard creator for camera calibration and saving to pdf.
+# Camera Calibration Pattern Generator
+Checkerboard generator for camera calibration and saving to pdf.
 
 ```
 usage: CheckerboardCreator.py [-h] -r ROWS_GRID_NUM -c COLUMNS_GRID_NUM
@@ -29,4 +29,4 @@ examples:
   py CheckerboardCreator.py -r 7 -c 8 -s 30 -o A4 -d results -b (20,30,80)
   ```
   
-![preview](https://github.com/ProximaB/Checkerboard-creator-for-camera-calibration/blob/master/preview.png?raw=true)
+![preview](https://github.com/ProximaB/Camera-Calibration-Pattern-Generator/blob/master/preview.png?raw=true)
